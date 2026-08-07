@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shivani Madan | AI/ML Engineer</title>
+  <style>
+    :root {
+      --bg: #FAF7F5;
+      --dark: #0D1117;
+      --dark2: #161B22;
+      --card: #FFFFFF;
+      --rose: #C4826E;
+      --rose2: #B06070;
+      --rose-light: #E8B4A0;
+      --rose-pale: #F5EAE5;
+      --text: #1A1015;
+      --muted: #7A6E6B;
+      --border: #EDE5E0;
+      --gradient: linear-gradient(135deg, #C4826E 0%, #B06070 60%, #8B4A5E 100%);
+      --shadow: 0 4px 24px rgba(196,130,110,0.12);
+      --shadow-lg: 0 8px 40px rgba(196,130,110,0.20);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(250,247,245,0.93); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border); padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; height: 60px;
+    }
+    .nav-logo { font-weight: 800; font-size: 1.05rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--rose); }
+
+    /* HELPERS */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--rose);
+      background: rgba(196,130,110,0.1); padding: 4px 12px; border-radius: 20px; margin-bottom: 0.75rem;
+    }
+    .section-title { font-size: 2rem; font-weight: 800; color: var(--dark); margin-bottom: 0.4rem; }
+    .section-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 3rem; max-width: 560px; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; padding-top: 80px; background: var(--dark);
+      display: flex; align-items: center; position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 65% 40%, rgba(196,130,110,0.18) 0%, transparent 65%),
+                  radial-gradient(ellipse 45% 45% at 15% 80%, rgba(176,96,112,0.12) 0%, transparent 60%);
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 340px; gap: 4rem;
+      align-items: center; position: relative; z-index: 1;
+    }
+    .hero-name {
+      font-size: clamp(2.8rem, 5.5vw, 4.2rem); font-weight: 800;
+      color: #F5EEE9; line-height: 1.05; margin-bottom: 0.5rem; white-space: nowrap;
+    }
+    .hero-name span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-title { font-size: 1.1rem; color: #94A09A; margin-bottom: 1.5rem; font-weight: 500; }
+    .hero-bio { color: #C8BEB8; font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem; max-width: 560px; }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 2.5rem; }
+    .chip {
+      background: rgba(196,130,110,0.14); border: 1px solid rgba(196,130,110,0.28);
+      color: #E8B4A0; font-size: 0.76rem; padding: 5px 12px; border-radius: 20px; font-weight: 500;
+    }
+    .hero-cta { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 11px 22px; border-radius: 10px; font-size: 0.875rem;
+      font-weight: 600; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-email { background: var(--gradient); color: white; box-shadow: 0 4px 14px rgba(196,130,110,0.45); }
+    .btn-email:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(196,130,110,0.55); }
+    .btn-github { background: #24292E; color: #F0F6FC; box-shadow: 0 4px 14px rgba(0,0,0,0.35); }
+    .btn-github:hover { background: #2D333B; transform: translateY(-2px); }
+    .btn-linkedin { background: #0A66C2; color: white; box-shadow: 0 4px 14px rgba(10,102,194,0.4); }
+    .btn-linkedin:hover { background: #0958A8; transform: translateY(-2px); }
+
+    .hero-photo-wrap { display: flex; justify-content: center; align-items: center; }
+    .hero-photo-ring { position: relative; width: 290px; height: 290px; }
+    .hero-photo-ring::before {
+      content: ''; position: absolute; inset: -3px;
+      background: var(--gradient); border-radius: 50%; z-index: 0;
+    }
+    .hero-photo-ring::after {
+      content: ''; position: absolute; inset: -16px;
+      border: 1px solid rgba(196,130,110,0.25); border-radius: 50%; z-index: 0;
+    }
+    .hero-photo-ring img {
+      width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+      position: relative; z-index: 1; border: 4px solid var(--dark);
+    }
+    .hero-stats { display: flex; gap: 2.5rem; margin-top: 2.25rem; }
+    .stat-num { font-size: 1.5rem; font-weight: 800; color: #E8B4A0; }
+    .stat-label { font-size: 0.68rem; color: #64584F; text-transform: uppercase; letter-spacing: 0.09em; }
+
+    /* EXPERIENCE */
+    #experience { background: var(--dark); padding: 5rem 2rem; }
+    #experience .section-label { background: rgba(196,130,110,0.12); color: var(--rose-light); }
+    #experience .section-title { color: #F5EEE9; }
+    #experience .section-sub { color: #94A09A; }
+
+    .exp-timeline { position: relative; }
+    .exp-timeline::before {
+      content: ''; position: absolute; left: 28px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--rose), var(--rose2), transparent);
+    }
+    .exp-item { display: grid; grid-template-columns: 60px 1fr; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .exp-logo {
+      width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 800; letter-spacing: -0.02em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4); overflow: hidden;
+      position: relative; z-index: 1;
+    }
+    .logo-amazon { background: #232F3E; }
+    .logo-amazon svg { width: 38px; height: 38px; }
+    .logo-wipro { background: #341C6E; }
+    .logo-wipro svg { width: 38px; height: 38px; }
+    .logo-honda { background: #CC0000; }
+    .logo-honda svg { width: 32px; height: 32px; }
+    .logo-iiit { background: linear-gradient(135deg, #1A237E, #283593); color: white; font-size: 0.6rem; text-align: center; line-height: 1.2; padding: 6px; }
+
+    .exp-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.5rem; transition: border-color 0.2s;
+    }
+    .exp-card:hover { border-color: rgba(196,130,110,0.35); }
+    .exp-company { font-size: 0.75rem; font-weight: 700; color: var(--rose-light); text-transform: uppercase; letter-spacing: 0.09em; }
+    .exp-role { font-size: 1.05rem; font-weight: 700; color: #F5EEE9; margin: 0.2rem 0; }
+    .exp-meta { font-size: 0.78rem; color: #5A524E; }
+    .exp-desc { color: #94A09A; font-size: 0.875rem; margin-top: 0.75rem; line-height: 1.72; }
+
+    /* SKILLS */
+    #skills { background: var(--bg); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.4rem; }
+    .skill-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem;
+      box-shadow: var(--shadow); transition: all 0.2s;
+    }
+    .skill-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: rgba(196,130,110,0.35); }
+    .skill-card-icon { font-size: 1.4rem; margin-bottom: 0.7rem; }
+    .skill-card-title { font-size: 0.78rem; font-weight: 700; color: var(--dark); margin-bottom: 0.7rem; text-transform: uppercase; letter-spacing: 0.09em; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.38rem; }
+    .skill-tag {
+      background: var(--rose-pale); border: 1px solid rgba(196,130,110,0.2);
+      color: #8B4A3E; font-size: 0.72rem; padding: 3px 10px; border-radius: 12px; font-weight: 500;
+    }
+
+    /* PROJECTS */
+    #projects { background: #F2EDEA; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 1.4rem; }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 1.6rem;
+      box-shadow: var(--shadow); transition: all 0.25s;
+      display: flex; flex-direction: column;
+    }
+    .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(196,130,110,0.35); }
+    .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.7rem; }
+    .project-emoji { font-size: 1.6rem; }
+    .project-date { font-size: 0.68rem; color: var(--muted); font-weight: 600; background: var(--border); padding: 3px 10px; border-radius: 10px; white-space: nowrap; }
+    .project-name { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.45rem; }
+    .project-why {
+      font-size: 0.78rem; font-style: italic; color: var(--rose2);
+      background: rgba(176,96,112,0.07); border-left: 3px solid var(--rose);
+      padding: 5px 10px; border-radius: 0 8px 8px 0; margin-bottom: 0.7rem;
+    }
+    .project-desc { font-size: 0.855rem; color: var(--muted); line-height: 1.72; margin-bottom: 0.9rem; flex: 1; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.32rem; margin-bottom: 1.1rem; }
+    .stack-tag {
+      background: rgba(176,96,112,0.07); border: 1px solid rgba(176,96,112,0.18);
+      color: var(--rose2); font-size: 0.68rem; padding: 2px 8px; border-radius: 8px; font-weight: 600;
+    }
+    .project-links { display: flex; gap: 0.65rem; }
+    .proj-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.77rem; font-weight: 600; text-decoration: none;
+      padding: 6px 13px; border-radius: 8px; transition: all 0.2s;
+    }
+    .proj-link-github { background: #1A1E23; color: #F0F6FC; }
+    .proj-link-github:hover { background: #2D333B; transform: translateY(-1px); }
+    .proj-link-demo { background: var(--rose-pale); color: var(--rose2); border: 1px solid rgba(196,130,110,0.3); }
+    .proj-link-demo:hover { background: rgba(196,130,110,0.15); }
+
+    /* ACHIEVEMENTS */
+    #achievements { background: var(--dark); padding: 5rem 2rem; }
+    #achievements .section-label { background: rgba(196,130,110,0.12); color: var(--rose-light); }
+    #achievements .section-title { color: #F5EEE9; }
+    #achievements .section-sub { color: #94A09A; }
+    .ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(275px, 1fr)); gap: 1.25rem; }
+    .ach-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.5rem; transition: all 0.2s;
+    }
+    .ach-card:hover { border-color: rgba(196,130,110,0.4); background: rgba(196,130,110,0.04); }
+    .ach-icon { font-size: 1.4rem; margin-bottom: 0.7rem; }
+    .ach-title { font-size: 0.92rem; font-weight: 700; color: #F5EEE9; margin-bottom: 0.35rem; }
+    .ach-sub { font-size: 0.76rem; color: var(--rose-light); font-weight: 600; margin-bottom: 0.45rem; }
+    .ach-desc { font-size: 0.82rem; color: #94A09A; line-height: 1.65; }
+    .ach-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 0.6rem; font-size: 0.76rem; font-weight: 600; color: var(--rose-light); text-decoration: none; opacity: 0.85; transition: opacity 0.2s; }
+    .ach-link:hover { opacity: 1; }
+
+    /* CONTACT */
+    #contact { background: var(--bg); }
+    .contact-card {
+      background: var(--dark); border-radius: 24px; padding: 4rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .contact-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(196,130,110,0.15) 0%, transparent 70%);
+    }
+    .contact-card > * { position: relative; z-index: 1; }
+    .contact-title { font-size: 1.9rem; font-weight: 800; color: #F5EEE9; margin-bottom: 0.5rem; }
+    .contact-sub { color: #94A09A; margin-bottom: 2.5rem; font-size: 0.95rem; }
+    .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px; border-radius: 12px; font-size: 0.875rem; font-weight: 600;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .cl-email { background: var(--gradient); color: white; box-shadow: 0 4px 14px rgba(196,130,110,0.45); }
+    .cl-email:hover { transform: translateY(-2px); }
+    .cl-linkedin { background: #0A66C2; color: white; box-shadow: 0 4px 14px rgba(10,102,194,0.35); }
+    .cl-linkedin:hover { background: #0958A8; transform: translateY(-2px); }
+    .cl-github { background: #24292E; color: #F0F6FC; box-shadow: 0 4px 14px rgba(0,0,0,0.35); }
+    .cl-github:hover { background: #2D333B; transform: translateY(-2px); }
+
+    footer { background: #080C10; color: #3A3230; text-align: center; padding: 1.5rem; font-size: 0.78rem; }
+
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-photo-wrap { order: -1; }
+      .hero-photo-ring { width: 200px; height: 200px; }
+      .hero-name { white-space: normal; font-size: 2.4rem; }
+      .hero-chips, .hero-cta, .hero-stats { justify-content: center; }
+      .contact-card { padding: 2.5rem 1.25rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Shivani Madan</div>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner container">
+    <div>
+      <h1 class="hero-name"><span>Shivani Madan</span></h1>
+      <p class="hero-title">AI/ML Engineer &amp; Data Scientist</p>
+      <p class="hero-bio">
+        I specialize in the full ML lifecycle, from wrangling messy real-world data and training models to deploying agentic AI systems that work in production. I'm drawn to problems where intelligence meets infrastructure, where the right model, retrieval system, or evaluation framework can turn overwhelming data into decisions that matter.
+      </p>
+      <div class="hero-chips">
+        <span class="chip">Agentic AI Systems</span>
+        <span class="chip">LLM Evaluation</span>
+        <span class="chip">Production ML</span>
+        <span class="chip">NLP &amp; Language Models</span>
+        <span class="chip">Responsible AI</span>
+      </div>
+      <div class="hero-cta">
+        <a href="mailto:shivanimadan1099@gmail.com" class="btn btn-email">✉ Email</a>
+        <a href="https://github.com/ShivaniM99" target="_blank" class="btn btn-github">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/shivanimadan" target="_blank" class="btn btn-linkedin">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Projects</div></div>
+        <div class="stat"><div class="stat-num">2+</div><div class="stat-label">Years Industry</div></div>
+        <div class="stat"><div class="stat-num">M.S.</div><div class="stat-label">Data Science · CU Boulder</div></div>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring">
+        <img src="profile.jpg" alt="Shivani Madan"
+          onerror="this.style.background='linear-gradient(135deg,#C4826E,#8B4A5E)';this.removeAttribute('src')" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <span class="section-label">Experience</span>
+    <h2 class="section-title" style="color:#F5EEE9">Where I've Worked</h2>
+    <p class="section-sub">Industry experience spanning AI research, enterprise software, and production ML.</p>
+    <div class="exp-timeline">
+
+      <!-- Amazon -->
+      <div class="exp-item">
+        <div class="exp-logo logo-amazon">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <text x="50" y="45" text-anchor="middle" font-size="38" font-weight="900" fill="#FF9900" font-family="Arial">a</text>
+            <path d="M20 62 Q50 75 80 62" stroke="#FF9900" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <polygon points="76,58 82,65 76,65" fill="#FF9900"/>
+          </svg>
+        </div>
+        <div class="exp-card">
+          <div class="exp-company">Amazon.com Inc.</div>
+          <div class="exp-role">Data Scientist Intern</div>
+          <div class="exp-meta">Seattle, WA · May – Aug 2025</div>
+          <p class="exp-desc">Built an end-to-end anomaly detection and demand forecasting system for Amazon Fresh, turning raw warehouse data into actionable stockout risk predictions that directly informed replenishment strategy for business teams.</p>
+        </div>
+      </div>
+
+      <!-- Honda Research Institute -->
+      <div class="exp-item">
+        <div class="exp-logo logo-honda">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" fill="#CC0000" rx="14"/>
+            <text x="50" y="68" text-anchor="middle" font-size="52" font-weight="900" fill="white" font-family="Arial">H</text>
+          </svg>
+        </div>
+        <div class="exp-card">
+          <div class="exp-company">Honda Research Institute</div>
+          <div class="exp-role">AI Engineer Intern (Capstone)</div>
+          <div class="exp-meta">Remote · Jan – May 2026</div>
+          <p class="exp-desc">Designed and built a Temporal Context Layer for automotive cloud code repositories: a knowledge graph and ML scoring engine that maps functions, classes, and cross-team commits in Neo4j, using PageRank and call-graph proximity scoring to identify which tests need to run after any code change. Reduced CI/CD test load by 72-84% across 4 realistic automotive change types without missing a single failure.</p>
+        </div>
+      </div>
+
+      <!-- Wipro -->
+      <div class="exp-item">
+        <div class="exp-logo logo-wipro">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" fill="#341C6E" rx="14"/>
+            <text x="50" y="65" text-anchor="middle" font-size="46" font-weight="900" fill="#B4D334" font-family="Arial">W</text>
+          </svg>
+        </div>
+        <div class="exp-card">
+          <div class="exp-company">Wipro Limited</div>
+          <div class="exp-role">Data Scientist</div>
+          <div class="exp-meta">Bengaluru, India · Jul 2022 – Jul 2024</div>
+          <p class="exp-desc">Built and optimized data-driven systems for enterprise clients at scale from predictive models to performance-tuned SQL pipelines that improved reliability across notification infrastructure.</p>
+        </div>
+      </div>
+
+      <!-- IIIT Dharwad -->
+      <div class="exp-item">
+        <div class="exp-logo logo-iiit">IIIT<br>Dharwad</div>
+        <div class="exp-card">
+          <div class="exp-company">IIIT Dharwad</div>
+          <div class="exp-role">Data Science Research Intern</div>
+          <div class="exp-meta">Jun 2021 – Apr 2022</div>
+          <p class="exp-desc">Contributed to a humanoid robotics project, developing speech recognition and sound localization systems using reinforcement learning techniques.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <span class="section-label">Skills</span>
+    <h2 class="section-title">Technical Toolkit</h2>
+    <p class="section-sub">A full-stack ML skill set covering data pipelines, model training, and deployed agentic systems.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-icon">🐍</div>
+        <div class="skill-card-title">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
+          <span class="skill-tag">R</span><span class="skill-tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🧠</div>
+        <div class="skill-card-title">Machine Learning &amp; AI</div>
+        <div class="skill-tags">
+          <span class="skill-tag">PyTorch</span><span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">scikit-learn</span><span class="skill-tag">XGBoost</span>
+          <span class="skill-tag">LSTM</span><span class="skill-tag">Transformers</span>
+          <span class="skill-tag">HuggingFace</span><span class="skill-tag">DeBERTa</span><span class="skill-tag">RoBERTa</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🤖</div>
+        <div class="skill-card-title">Agentic AI &amp; LLMs</div>
+        <div class="skill-tags">
+          <span class="skill-tag">LangGraph</span><span class="skill-tag">LangChain</span>
+          <span class="skill-tag">OpenAI GPT-4o</span><span class="skill-tag">RAG Pipelines</span>
+          <span class="skill-tag">Prompt Engineering</span><span class="skill-tag">FAISS</span>
+          <span class="skill-tag">BM25</span><span class="skill-tag">Hybrid Retrieval</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">📊</div>
+        <div class="skill-card-title">Data &amp; Analytics</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span>
+          <span class="skill-tag">ETL Pipelines</span><span class="skill-tag">A/B Testing</span>
+          <span class="skill-tag">Time-Series Forecasting</span><span class="skill-tag">Statistical Testing</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">☁️</div>
+        <div class="skill-card-title">Cloud &amp; Infrastructure</div>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS S3</span><span class="skill-tag">SageMaker</span>
+          <span class="skill-tag">Redshift</span><span class="skill-tag">GCP</span>
+          <span class="skill-tag">Docker</span><span class="skill-tag">Apache Spark</span><span class="skill-tag">Snowflake</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🗄️</div>
+        <div class="skill-card-title">Databases &amp; Visualization</div>
+        <div class="skill-tags">
+          <span class="skill-tag">PostgreSQL</span><span class="skill-tag">MySQL</span>
+          <span class="skill-tag">MongoDB</span><span class="skill-tag">Neo4j</span>
+          <span class="skill-tag">Tableau</span><span class="skill-tag">Power BI</span><span class="skill-tag">QuickSight</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <span class="section-label">Projects</span>
+    <h2 class="section-title">Work I'm Proud Of</h2>
+    <p class="section-sub">End-to-end systems ranging from research-grade ML to production-deployed AI applications.</p>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">🔬</div>
+          <span class="project-date">May 2026</span>
+        </div>
+        <div class="project-name">Statistical Benchmark Compression for LLM Evaluation</div>
+        <div class="project-why">LLM evaluation is broken. Benchmarks are bloated and slow. This cuts evaluation time nearly in half without missing a single model quality signal.</div>
+        <p class="project-desc">A modular evaluation compression framework for the evalscope ecosystem. Reduces LLM benchmark size by 40–47% while preserving perfect rank ordering across reference models. Validated across coding, long-context reasoning (AA-LCR), and multimodal benchmarks (MMMU, 12,600 questions) using a discriminability-based algorithm with bias-correcting calibration anchors.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span><span class="stack-tag">Pandas</span>
+          <span class="stack-tag">SciPy</span><span class="stack-tag">scikit-learn</span><span class="stack-tag">evalscope</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ShivaniM99/evalscope" target="_blank" class="proj-link proj-link-github">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">🤖</div>
+          <span class="project-date">Feb 2026</span>
+        </div>
+        <div class="project-name">Agentic Technical Support Assistant</div>
+        <div class="project-why">Most RAG systems hallucinate when the answer isn't in the docs. This one doesn't. The verifier either cites evidence or says it doesn't know.</div>
+        <p class="project-desc">A production-grade 5-node multi-agent RAG pipeline delivering fast, source-verified answers from 280+ technical PDFs in under 3 seconds. Uses hybrid retrieval (FAISS + BM25 + RRF fusion) and an LLM verifier agent with "insufficient evidence" fallback to prevent hallucinations.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span><span class="stack-tag">LangGraph</span>
+          <span class="stack-tag">GPT-4o</span><span class="stack-tag">FAISS</span>
+          <span class="stack-tag">BM25</span><span class="stack-tag">FastAPI</span><span class="stack-tag">Pydantic</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ShivaniM99/Agentic-Technical-Lookup-And-Support" target="_blank" class="proj-link proj-link-github">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">🚗</div>
+          <span class="project-date">Jan – May 2026</span>
+        </div>
+        <div class="project-name">Temporal Context Layer for Code Repositories</div>
+        <div class="project-why">In safety-critical automotive software, running the wrong tests can have real consequences. This makes test prioritization intelligent and auditable.</div>
+        <p class="project-desc">A knowledge graph and ML scoring engine that identifies which tests need to run after any code change, reducing CI/CD test load by 72-84% without missing a failure. Parses Python automotive cloud services into a Neo4j graph with PageRank-based test risk scoring, validated across 25 labeled scenarios. Built for Honda Research Institute.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span><span class="stack-tag">Neo4j</span>
+          <span class="stack-tag">GitPython</span><span class="stack-tag">PageRank</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ShivaniM99/Temporal-Context-Layer-For-Code-Repositories" target="_blank" class="proj-link proj-link-github">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">🏦</div>
+          <span class="project-date">Jan – Feb 2026</span>
+        </div>
+        <div class="project-name">Financial Client Segmentation &amp; Income Prediction</div>
+        <div class="project-why">Enables differentiated targeting across product, pricing, and marketing channels from a single ML pipeline.</div>
+        <p class="project-desc">End-to-end ML pipeline segmenting 199K customers into distinct socioeconomic profiles and predicting high-income clients with 95.5% accuracy. K-Means + PCA clustering identifies 4 customer profiles; XGBoost classifier with custom class-weight tuning handles severe class imbalance across 22 domain-informed features.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span><span class="stack-tag">XGBoost</span>
+          <span class="stack-tag">scikit-learn</span><span class="stack-tag">PCA</span><span class="stack-tag">Pandas</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ShivaniM99/Financial-Client-Segmentation-Income-Prediction" target="_blank" class="proj-link proj-link-github">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">🗳️</div>
+          <span class="project-date">Oct – Dec 2025</span>
+        </div>
+        <div class="project-name">Political Evasion Detection | SemEval 2026 CLARITY</div>
+        <div class="project-why">Politicians dodge questions in specific, classifiable ways. This model learns to catch them.</div>
+        <p class="project-desc">Fine-tuned transformer models to classify 9 adversarial evasion tactics in political discourse, achieving 0.64 macro F1 and a 48.6% improvement over the TF-IDF baseline. Trained DeBERTa-v3, RoBERTa, and ELECTRA with linguistic feature engineering and ablation studies diagnosing transformer sensitivity to adversarial class imbalance.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span><span class="stack-tag">HuggingFace</span>
+          <span class="stack-tag">PyTorch</span><span class="stack-tag">DeBERTa-v3</span>
+          <span class="stack-tag">RoBERTa</span><span class="stack-tag">Sentence-Transformers</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ShivaniM99/Political-Evasion-Detection-SemEval-2026-CLARITY" target="_blank" class="proj-link proj-link-github">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">💸</div>
+          <span class="project-date">Oct – Dec 2025</span>
+        </div>
+        <div class="project-name">PayUp: AI Bill Splitting Agent</div>
+        <div class="project-why">A full cloud-native pipeline: OCR → LLM reasoning → async workers → real-time frontend updates, in one seamless flow.</div>
+        <p class="project-desc">Cloud-native AI web app that extracts itemized receipt data via OCR and splits bills with 98% accuracy. GCP Vision OCR → LangChain + Gemini → Celery + RabbitMQ async processing → Redis Pub/Sub + WebSockets → React frontend. Load tested to 6.2–9.4s across 10+ receipts.</p>
+        <div class="project-stack">
+          <span class="stack-tag">GCP Vision</span><span class="stack-tag">LangChain</span>
+          <span class="stack-tag">Gemini</span><span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">Celery</span><span class="stack-tag">Redis</span>
+          <span class="stack-tag">React</span><span class="stack-tag">Supabase</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ShivaniM99/PayUp-AI-Powered-Bill-Splitting-Agent" target="_blank" class="proj-link proj-link-github">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">🏋️</div>
+          <span class="project-date">Feb – Apr 2025</span>
+        </div>
+        <div class="project-name">Personalized Fitness Recommendation A/B Experiment</div>
+        <div class="project-why">Behavioral features can power meaningfully better fitness recommendations, validated through statistical rigor and not just model metrics.</div>
+        <p class="project-desc">Personalized calorie-burn prediction system validated through a controlled A/B experiment. Regression model predicts session-level calorie burn (R² = 0.81). A/B test with t-tests and ANOVA confirms statistical significance of personalized vs. baseline approach across user cohorts.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span><span class="stack-tag">scikit-learn</span>
+          <span class="stack-tag">SciPy</span><span class="stack-tag">Pandas</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ShivaniM99" target="_blank" class="proj-link proj-link-github">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- NEW: Resume Analysis -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">📄</div>
+          <span class="project-date">Jun – Dec 2024</span>
+        </div>
+        <div class="project-name">Resume Analysis &amp; Job Role Recommender</div>
+        <div class="project-why">Automating resume screening requires understanding both structure and semantics. This system handles both at 82% accuracy.</div>
+        <p class="project-desc">Designed and deployed an end-to-end ML/DL pipeline that classifies resumes and recommends job roles using Logistic Regression, CNNs, and LSTMs. Engineered NER-based skill extraction and TF-IDF pipelines for structured feature generation. Tuned models and validated performance with precision, recall, and F1 metrics to ensure reliable job-matching automation across diverse resume formats.</p>
+        <div class="project-stack">
+          <span class="stack-tag">NLP</span><span class="stack-tag">TensorFlow</span>
+          <span class="stack-tag">Keras</span><span class="stack-tag">scikit-learn</span>
+          <span class="stack-tag">Pandas</span><span class="stack-tag">NumPy</span><span class="stack-tag">Flask</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ShivaniM99" target="_blank" class="proj-link proj-link-github">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- NEW: Women-Led Business -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">👩‍💼</div>
+          <span class="project-date">Jan – Mar 2025</span>
+        </div>
+        <div class="project-name">Predicting Success of Women-Led Businesses</div>
+        <div class="project-why">Women-led startups receive significantly less venture capital despite often outperforming. Data can help close that gap.</div>
+        <p class="project-desc">A machine learning initiative examining success factors for women-owned enterprises, addressing a critical funding disparity in the startup ecosystem. Applied PCA, clustering, association rule mining, Naive Bayes, decision trees, SVM, and ensemble methods to identify which business characteristics are most predictive of long-term success, providing data-driven analytical support for women entrepreneurs navigating underfunded, underrepresented sectors.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span><span class="stack-tag">PCA</span>
+          <span class="stack-tag">Clustering</span><span class="stack-tag">SVM</span>
+          <span class="stack-tag">Ensemble Methods</span><span class="stack-tag">scikit-learn</span>
+        </div>
+        <div class="project-links">
+          <a href="https://vaja8152.wixsite.com/shivani-madan" target="_blank" class="proj-link proj-link-demo">↗ View Website</a>
+        </div>
+      </div>
+
+      <!-- NEW: Q2Impact -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">🌍</div>
+          <span class="project-date">Nov 2024</span>
+        </div>
+        <div class="project-name">Youth Employment Data Platform | Q2Impact</div>
+        <div class="project-why">Mainstream platforms like LinkedIn miss hyper-local job markets. This platform surfaces localized opportunities invisible elsewhere.</div>
+        <p class="project-desc">A data-driven web application bridging the gap between young job seekers and local businesses under the Ministry of Youth. Built an interactive map-based dashboard with location-based job filtering where youth filter by type, proximity, and availability, businesses manage listings, and youth centers process raw data. Captures localized insights from businesses not found on mainstream platforms, with a dataset incorporating Arabic-language business input reflecting authentic local context. Built with collaborators Yuni Wu and Daniel Wesely.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span><span class="stack-tag">Jupyter</span>
+          <span class="stack-tag">Data Visualization</span><span class="stack-tag">Web App</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ShivaniM99/Empowering-Youth-Employment-through-Innovative-Data-Solutions---Q2Impact" target="_blank" class="proj-link proj-link-github">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container">
+    <span class="section-label">Achievements</span>
+    <h2 class="section-title" style="color:#F5EEE9">Recognition &amp; Contributions</h2>
+    <p class="section-sub">Awards, publications, and contributions to the broader ML community.</p>
+    <div class="ach-grid">
+
+      <div class="ach-card">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-title">Data Science Hackathon Winner</div>
+        <div class="ach-sub">University of Colorado Boulder · Feb 2026</div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-icon">📖</div>
+        <div class="ach-title">Published at Springer CVIP 2022</div>
+        <div class="ach-sub">Book Chapter · Computer Vision &amp; Image Processing</div>
+        <a href="https://link.springer.com/chapter/10.1007/978-3-031-31417-9_21" target="_blank" class="ach-link">↗ Read on Springer</a>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-icon">🔬</div>
+        <div class="ach-title">Open Source Contributor: evalscope</div>
+        <div class="ach-sub">LLM Evaluation Framework</div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-icon">🎓</div>
+        <div class="ach-title">Teaching Assistant</div>
+        <div class="ach-sub">University of Colorado Boulder</div>
+        <p class="ach-desc">Supported graduate-level instruction for CSCI 5122: Neural Networks &amp; Deep Learning and CSCI 5612: Machine Learning, mentoring students on deep learning theory and applied ML.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-card">
+      <span class="section-label" style="background:rgba(196,130,110,0.15);color:#E8B4A0">Let's Connect</span>
+      <h2 class="contact-title">Open to New Opportunities</h2>
+      <p class="contact-sub">Looking for full-time roles in Applied ML, Data Science, and AI Engineering.<br>I'd love to connect if you're building something meaningful.</p>
+      <div class="contact-links">
+        <a href="mailto:shivanimadan1099@gmail.com" class="contact-link cl-email">✉ shivanimadan1099@gmail.com</a>
+        <a href="https://linkedin.com/in/shivanimadan" target="_blank" class="contact-link cl-linkedin">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/ShivaniM99" target="_blank" class="contact-link cl-github">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Shivani Madan · AI/ML Engineer &amp; Data Scientist</p>
+</footer>
+
+</body>
+</html>
