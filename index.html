@@ -667,6 +667,52 @@
         </div>
       </div>
 
+      <!-- NEW: Deepgram STT Eval -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">🎙️</div>
+          <span class="project-date">2025</span>
+        </div>
+        <div class="project-name">Deepgram STT Evaluation | Pharmacy Refill Line</div>
+        <div class="project-why">When a transcription error swaps one medicine name for another, it's not a UX problem. This evaluation was built to catch that before it reached production.</div>
+        <p class="project-desc">Rigorous benchmark evaluation of Deepgram speech-to-text for a pharmacy refill phone line, testing 648 recordings across four audio quality levels. Verdict: NO-GO on two blocking issues. Medicine name accuracy fell to 94% against a 98% threshold on phone-quality audio, and 88% of real-caller requests arrived fragmented due to mid-speech pauses. Found that a partial medicine word list made accuracy worse than no list at all, dropping from 86% to 76% for unlisted names. Prescription number accuracy was 100% across 188 samples. Includes an automated regression test suite to prevent future regressions.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Deepgram API</span><span class="stack-tag">Python</span>
+          <span class="stack-tag">Speech-to-Text</span><span class="stack-tag">Benchmarking</span>
+          <span class="stack-tag">Automated Testing</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ShivaniM99/deepgram-stt-eval" target="_blank" class="proj-link proj-link-github">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://shivanim99.github.io/deepgram-stt-eval/" target="_blank" class="proj-link proj-link-demo">↗ Live Report</a>
+        </div>
+      </div>
+
+      <!-- NEW: Agentic RAG Evaluation -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">🧪</div>
+          <span class="project-date">2025</span>
+        </div>
+        <div class="project-name">Evaluation of an Agentic RAG System</div>
+        <div class="project-why">Shipping a RAG system without evals is guesswork. This adds the observability and measurement layer that turns a hackathon prototype into something trustworthy.</div>
+        <p class="project-desc">Built the full evaluation, observability, and monitoring layer for an agentic RAG system (LangGraph, FAISS + BM25 hybrid retrieval, GPT-4o) over 280+ technical PDFs. Designed an 82-question synthetic golden set validated by Claude, with bootstrap confidence intervals and a cross-family judge to avoid self-scoring bias. Found and fixed three critical bugs through evals: a verifier that silently dropped every citation, a pipeline that hallucinated answers when no evidence existed, and an overconfident analyzer on off-topic chunks. Achieves 94.6% groundedness and 0% hallucination rate on unanswerable questions. Includes per-node latency and cost tracing in SQLite with optional Langfuse export.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span><span class="stack-tag">LangGraph</span>
+          <span class="stack-tag">GPT-4o</span><span class="stack-tag">FAISS</span>
+          <span class="stack-tag">BM25</span><span class="stack-tag">SQLite</span>
+          <span class="stack-tag">Streamlit</span><span class="stack-tag">Langfuse</span><span class="stack-tag">pytest</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ShivaniM99/Evaluation-of-Agentic-RAG-System" target="_blank" class="proj-link proj-link-github">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
