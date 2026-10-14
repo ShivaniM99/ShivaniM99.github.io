@@ -468,7 +468,7 @@
         </div>
         <div class="project-name">Deepgram STT Evaluation | Pharmacy Refill Line</div>
         <div class="project-why">When a transcription error swaps one medicine name for another, it's not a UX problem. This evaluation was built to catch that before it reached production.</div>
-        <p class="project-desc">Rigorous benchmark evaluation of Deepgram speech-to-text for a pharmacy refill phone line, testing 648 recordings across four audio quality levels. Verdict: NO-GO on two blocking issues. Medicine name accuracy fell to 94% against a 98% threshold on phone-quality audio, and 88% of real-caller requests arrived fragmented due to mid-speech pauses. Found that a partial medicine word list made accuracy worse than no list at all, dropping from 86% to 76% for unlisted names. Prescription number accuracy was 100% across 188 samples. Includes an automated regression test suite to prevent future regressions.</p>
+        <p class="project-desc">Evaluated Deepgram speech-to-text for a high-stakes pharmacy refill phone line, testing across multiple audio quality levels and real-world caller scenarios. Uncovered two production-blocking issues around medicine name accuracy and request fragmentation, with counterintuitive findings about how word lists can make performance worse when incomplete. Delivered a clear go/no-go recommendation backed by evidence and an automated test suite to catch future regressions.</p>
         <div class="project-stack">
           <span class="stack-tag">Deepgram API</span><span class="stack-tag">Python</span>
           <span class="stack-tag">Speech-to-Text</span><span class="stack-tag">Benchmarking</span>
@@ -490,7 +490,7 @@
         </div>
         <div class="project-name">Evaluation of an Agentic RAG System</div>
         <div class="project-why">Shipping a RAG system without evals is guesswork. This adds the observability and measurement layer that turns a hackathon prototype into something trustworthy.</div>
-        <p class="project-desc">Built the full evaluation, observability, and monitoring layer for an agentic RAG system (LangGraph, FAISS + BM25 hybrid retrieval, GPT-4o) over 280+ technical PDFs. Designed an 82-question synthetic golden set validated by Claude, with bootstrap confidence intervals and a cross-family judge to avoid self-scoring bias. Found and fixed three critical bugs through evals: a verifier that silently dropped every citation, a pipeline that hallucinated answers when no evidence existed, and an overconfident analyzer on off-topic chunks. Achieves 94.6% groundedness and 0% hallucination rate on unanswerable questions. Includes per-node latency and cost tracing in SQLite with optional Langfuse export.</p>
+        <p class="project-desc">Designed and built a rigorous evaluation framework for a multi-agent RAG system, going beyond accuracy to measure groundedness, citation quality, and hallucination on unanswerable questions. Used a synthetic golden set with statistical confidence intervals and a cross-family judge to avoid self-scoring bias. The eval process surfaced and fixed several critical production bugs that would have gone undetected otherwise. Includes full observability across latency, cost, and agent behavior.</p>
         <div class="project-stack">
           <span class="stack-tag">Python</span><span class="stack-tag">LangGraph</span>
           <span class="stack-tag">GPT-4o</span><span class="stack-tag">FAISS</span>
@@ -512,7 +512,7 @@
         </div>
         <div class="project-name">Statistical Benchmark Compression for LLM Evaluation</div>
         <div class="project-why">LLM evaluation is broken. Benchmarks are bloated and slow. This cuts evaluation time nearly in half without missing a single model quality signal.</div>
-        <p class="project-desc">A modular evaluation compression framework for the evalscope ecosystem. Reduces LLM benchmark size by 40–47% while preserving perfect rank ordering across reference models. Validated across coding, long-context reasoning (AA-LCR), and multimodal benchmarks (MMMU, 12,600 questions) using a discriminability-based algorithm with bias-correcting calibration anchors.</p>
+        <p class="project-desc">Built a modular benchmark compression framework that significantly reduces the cost of LLM evaluation without losing the signal that separates good models from great ones. Validated across coding, long-context reasoning, and multimodal benchmarks, preserving rank ordering across reference models. Contributed as an open-source adapter to the evalscope ecosystem.</p>
         <div class="project-stack">
           <span class="stack-tag">Python</span><span class="stack-tag">Pandas</span>
           <span class="stack-tag">SciPy</span><span class="stack-tag">scikit-learn</span><span class="stack-tag">evalscope</span>
@@ -532,7 +532,7 @@
         </div>
         <div class="project-name">Agentic Technical Support Assistant</div>
         <div class="project-why">Most RAG systems hallucinate when the answer isn't in the docs. This one doesn't. The verifier either cites evidence or says it doesn't know.</div>
-        <p class="project-desc">A production-grade 5-node multi-agent RAG pipeline delivering fast, source-verified answers from 280+ technical PDFs in under 3 seconds. Uses hybrid retrieval (FAISS + BM25 + RRF fusion) and an LLM verifier agent with "insufficient evidence" fallback to prevent hallucinations.</p>
+        <p class="project-desc">A multi-agent RAG system built for technical support engineers needing fast, reliable answers over a large PDF knowledge base. Combines semantic and keyword retrieval with an LLM-based verification step that either cites its sources or explicitly says it doesn't know, eliminating hallucinated answers entirely.</p>
         <div class="project-stack">
           <span class="stack-tag">Python</span><span class="stack-tag">LangGraph</span>
           <span class="stack-tag">GPT-4o</span><span class="stack-tag">FAISS</span>
@@ -553,7 +553,7 @@
         </div>
         <div class="project-name">Temporal Context Layer for Code Repositories</div>
         <div class="project-why">In safety-critical automotive software, running the wrong tests can have real consequences. This makes test prioritization intelligent and auditable.</div>
-        <p class="project-desc">A knowledge graph and ML scoring engine that identifies which tests need to run after any code change, reducing CI/CD test load by 72-84% without missing a failure. Parses Python automotive cloud services into a Neo4j graph with PageRank-based test risk scoring, validated across 25 labeled scenarios. Built for Honda Research Institute.</p>
+        <p class="project-desc">Built for Honda Research Institute, this system maps code structure and change history into a knowledge graph to intelligently rank which tests matter most after any given change. Dramatically reduces CI/CD overhead in safety-critical automotive software without sacrificing coverage, making test prioritization both data-driven and auditable.</p>
         <div class="project-stack">
           <span class="stack-tag">Python</span><span class="stack-tag">Neo4j</span>
           <span class="stack-tag">GitPython</span><span class="stack-tag">PageRank</span>
@@ -573,7 +573,7 @@
         </div>
         <div class="project-name">Financial Client Segmentation &amp; Income Prediction</div>
         <div class="project-why">Enables differentiated targeting across product, pricing, and marketing channels from a single ML pipeline.</div>
-        <p class="project-desc">End-to-end ML pipeline segmenting 199K customers into distinct socioeconomic profiles and predicting high-income clients with 95.5% accuracy. K-Means + PCA clustering identifies 4 customer profiles; XGBoost classifier with custom class-weight tuning handles severe class imbalance across 22 domain-informed features.</p>
+        <p class="project-desc">End-to-end ML pipeline that segments a large customer base into distinct socioeconomic profiles and predicts high-income clients with strong accuracy. Tackled real-world challenges including severe class imbalance and high-dimensional data, distilling a large feature set down to what actually drives predictive power.</p>
         <div class="project-stack">
           <span class="stack-tag">Python</span><span class="stack-tag">XGBoost</span>
           <span class="stack-tag">scikit-learn</span><span class="stack-tag">PCA</span><span class="stack-tag">Pandas</span>
@@ -593,7 +593,7 @@
         </div>
         <div class="project-name">Political Evasion Detection | SemEval 2026 CLARITY</div>
         <div class="project-why">Politicians dodge questions in specific, classifiable ways. This model learns to catch them.</div>
-        <p class="project-desc">Fine-tuned transformer models to classify 9 adversarial evasion tactics in political discourse, achieving 0.64 macro F1 and a 48.6% improvement over the TF-IDF baseline. Trained DeBERTa-v3, RoBERTa, and ELECTRA with linguistic feature engineering and ablation studies diagnosing transformer sensitivity to adversarial class imbalance.</p>
+        <p class="project-desc">Fine-tuned transformer models to detect how politicians evade direct questions, classifying multiple distinct evasion tactics in political discourse. Conducted thorough ablation studies to understand model behavior under adversarial conditions, achieving significant gains over classical baselines.</p>
         <div class="project-stack">
           <span class="stack-tag">Python</span><span class="stack-tag">HuggingFace</span>
           <span class="stack-tag">PyTorch</span><span class="stack-tag">DeBERTa-v3</span>
@@ -614,7 +614,7 @@
         </div>
         <div class="project-name">PayUp: AI Bill Splitting Agent</div>
         <div class="project-why">A full cloud-native pipeline: OCR → LLM reasoning → async workers → real-time frontend updates, in one seamless flow.</div>
-        <p class="project-desc">Cloud-native AI web app that extracts itemized receipt data via OCR and splits bills with 98% accuracy. GCP Vision OCR → LangChain + Gemini → Celery + RabbitMQ async processing → Redis Pub/Sub + WebSockets → React frontend. Load tested to 6.2–9.4s across 10+ receipts.</p>
+        <p class="project-desc">A cloud-native web app that uses OCR and an LLM to extract and split itemized receipts intelligently. Built with an async processing architecture for real-time updates, keeping the experience fast even under load. Covers the full stack from document understanding to a live React frontend.</p>
         <div class="project-stack">
           <span class="stack-tag">GCP Vision</span><span class="stack-tag">LangChain</span>
           <span class="stack-tag">Gemini</span><span class="stack-tag">FastAPI</span>
@@ -636,7 +636,7 @@
         </div>
         <div class="project-name">Personalized Fitness Recommendation A/B Experiment</div>
         <div class="project-why">Behavioral features can power meaningfully better fitness recommendations, validated through statistical rigor and not just model metrics.</div>
-        <p class="project-desc">Personalized calorie-burn prediction system validated through a controlled A/B experiment. Regression model predicts session-level calorie burn (R² = 0.81). A/B test with t-tests and ANOVA confirms statistical significance of personalized vs. baseline approach across user cohorts.</p>
+        <p class="project-desc">Built a personalized fitness recommendation system and validated it properly — not just by model score, but through a controlled A/B experiment with statistical hypothesis testing across user cohorts. Showed that behavioral features drive meaningfully better recommendations than a generic baseline.</p>
         <div class="project-stack">
           <span class="stack-tag">Python</span><span class="stack-tag">scikit-learn</span>
           <span class="stack-tag">SciPy</span><span class="stack-tag">Pandas</span>
@@ -657,7 +657,7 @@
         </div>
         <div class="project-name">Resume Analysis &amp; Job Role Recommender</div>
         <div class="project-why">Automating resume screening requires understanding both structure and semantics. This system handles both at 82% accuracy.</div>
-        <p class="project-desc">Designed and deployed an end-to-end ML/DL pipeline that classifies resumes and recommends job roles using Logistic Regression, CNNs, and LSTMs. Engineered NER-based skill extraction and TF-IDF pipelines for structured feature generation. Tuned models and validated performance with precision, recall, and F1 metrics to ensure reliable job-matching automation across diverse resume formats.</p>
+        <p class="project-desc">An end-to-end pipeline that reads resumes, extracts skills automatically, and recommends relevant job roles. Explored both classical and deep learning approaches to find what actually works at this task, validating results with meaningful metrics rather than just accuracy.</p>
         <div class="project-stack">
           <span class="stack-tag">NLP</span><span class="stack-tag">TensorFlow</span>
           <span class="stack-tag">Keras</span><span class="stack-tag">scikit-learn</span>
@@ -679,7 +679,7 @@
         </div>
         <div class="project-name">Predicting Success of Women-Led Businesses</div>
         <div class="project-why">Women-led startups receive significantly less venture capital despite often outperforming. Data can help close that gap.</div>
-        <p class="project-desc">A machine learning initiative examining success factors for women-owned enterprises, addressing a critical funding disparity in the startup ecosystem. Applied PCA, clustering, association rule mining, Naive Bayes, decision trees, SVM, and ensemble methods to identify which business characteristics are most predictive of long-term success, providing data-driven analytical support for women entrepreneurs navigating underfunded, underrepresented sectors.</p>
+        <p class="project-desc">A data-driven study exploring what actually predicts success for women-owned businesses, a group that receives far less funding despite strong performance. Used multiple ML approaches to surface meaningful patterns across business characteristics, turning a social equity question into an analytical one.</p>
         <div class="project-stack">
           <span class="stack-tag">Python</span><span class="stack-tag">PCA</span>
           <span class="stack-tag">Clustering</span><span class="stack-tag">SVM</span>
@@ -698,7 +698,7 @@
         </div>
         <div class="project-name">Youth Employment Data Platform | Q2Impact</div>
         <div class="project-why">Mainstream platforms like LinkedIn miss hyper-local job markets. This platform surfaces localized opportunities invisible elsewhere.</div>
-        <p class="project-desc">A data-driven web application bridging the gap between young job seekers and local businesses under the Ministry of Youth. Built an interactive map-based dashboard with location-based job filtering where youth filter by type, proximity, and availability, businesses manage listings, and youth centers process raw data. Captures localized insights from businesses not found on mainstream platforms, with a dataset incorporating Arabic-language business input reflecting authentic local context. Built with collaborators Yuni Wu and Daniel Wesely.</p>
+        <p class="project-desc">A web platform built to connect young job seekers with local businesses in communities underserved by mainstream job boards. Designed for multiple user types — youth, businesses, and youth centers — with a location-aware interface that surfaces opportunities invisible on LinkedIn or Indeed. Built in collaboration with Yuni Wu and Daniel Wesely.</p>
         <div class="project-stack">
           <span class="stack-tag">Python</span><span class="stack-tag">Jupyter</span>
           <span class="stack-tag">Data Visualization</span><span class="stack-tag">Web App</span>
